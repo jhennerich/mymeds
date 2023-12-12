@@ -50,6 +50,8 @@ gem "bootsnap", require: false
 gem 'dotenv-rails' 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+
+gem 'omniauth-gitlab'
 gem 'omniauth-rails_csrf_protection'
 
 
