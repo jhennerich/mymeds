@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(username: params[:session][:username])
+        @user = User.find_by(email: params[:session][:email])
         if @user && @user.authenticate(params[:session][:password])
             session[:user_id] = @user.id
             redirect_to root_path
@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
 
     def omniauth
         user = User.from_omniauth(request.env['omniauth.auth'])
+        binding.pry
         if user.valid?
             session[:user_id] = user.id
             redirect_to dashboard_path
