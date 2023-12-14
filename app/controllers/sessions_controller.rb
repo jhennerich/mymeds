@@ -5,6 +5,17 @@ class SessionsController < ApplicationController
         end
     end
 
+    def create
+        @user = User.find_by(username: params[:session][:username])
+        if @user && @user.authenticate(params[:session][:password])
+            session[:user_id] = @user.id
+            redirect_to root_path
+        else
+            flash[:error] = "Invalid username or password"
+            redirect_to login_path
+        end
+    end
+
     def omniauth
         user = User.from_omniauth(request.env['omniauth.auth'])
         if user.valid?
