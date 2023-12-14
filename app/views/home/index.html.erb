@@ -4,6 +4,7 @@
     <%= image_tag'github.png', size: "250x100" %>
 <% end %>
 
+<%= button_to "Sign in with email", "/login", method: :get %>
 <%= button_to "Sign in with Github", "/auth/github", data: { turbo: false } %>
 </p>
 

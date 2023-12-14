@@ -11,6 +11,7 @@ class User < ApplicationRecord
       u.full_name = data.name
       u.email = data.email
       u.encrypted_password = SecureRandom.hex(15)
+      u.password_digest = access_token.provider
 
     end
   end
