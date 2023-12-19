@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <%= render 'layouts/flash' %>
+    
+    <% if user_signed_in? %>
+      <%= button_to "Sign Out", sign_out_path, class: 'sign_out',method: :delete %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

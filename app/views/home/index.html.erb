@@ -3,7 +3,9 @@
 <%= link_to "https://github.com/login/oauth/authorize?client_id="+ @github_client_id + "&scope=repo" do %>
     <%= image_tag'github.png', size: "250x100" %>
 <% end %>
+</p>
 
+<p>
 <%= button_to "Sign in with email", "/sessions/new", method: :get %>
 <%= button_to "Sign in with Github", "/auth/github", data: { turbo: false } %>
 </p>
