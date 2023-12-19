@@ -1,6 +1,9 @@
-<h1>Welcome, <%= current_user.full_name %>  to MyMeds</h1>
+<h1>Welcome, <%= current_user.first_name %>  to MyMeds</h1>
 <p> Email: <%= current_user.email %> </p>
 <p> Login Provider: <%= current_user.provider %> </p>
+<p> Id: <%= current_user.id %> </p>
+<p> Uid: <%= current_user.uid %> </p>
+<p> First Name: <%= current_user.first_name %> </p>
 
 <h2> Your Meds </h2>
 

@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
+ root "home#index"
 
-  get "up" => "rails/health#show", as: :rails_health_check
-  root "home#index"
+#  get '/login', to: 'sessions#new'
+#  get '/login_via_mail', to: 'sessions#create'
+#  post '/login', to: 'sessions#create'
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/signup', to: 'users#new'
+
+  resources :registrations, only: [:new,:create]
+  resources :sessions, only: [:new, :create, :destroy]
+
+  get '/signup', to: 'sessions#new'
   post '/signup', to: 'users#create'
-  post 'users', to: 'users#create'
+
+#  post 'users', to: 'users#create'
 
   get '/auth/:provider/callback' => 'sessions#omniauth'
   post '/auth/:provider/callback' => 'sessions#omniauth'

@@ -1,15 +1,37 @@
-<h1>Login to your account</h1>
-<% if flash[:error] %>
-    <p><%= flash[:error] %></p>
-<% end %>
+<!-- app/views/sessions/new.html.erb -->
+<div class="text-center">
+  <h1>Sign In</h1>
 
+  <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
 
-<%= form_for :session, url: login_path do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.submit "Login" %>
-<% end %>
+    <!-- Display error message of form -->
+    <% if f.object.errors.full_messages.any? %>
+      <ul class='error'>
+        <% f.object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-<p>Don't have an account? <%= link_to "Sign up", signup_path %></p>
+    <!-- Field of sessoin form -->
+    <div class='row'>
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: 'Please enter email id' %>
+    </div>
+
+    <div class='row'>
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: 'Please enter password' %>
+    </div>
+
+    <div class='row'>
+      <%= f.submit 'Sign In' %>
+    </div>
+    <%= button_to "Sign in with Github", "/auth/github", data: { turbo: false } %>
+</p>
+
+<p>
+<%= button_to "Sign in with Google", '/auth/google_oauth2', method: :post, :data => {turbo: "false"} %>
+</p>
+  <% end %>
+</div>

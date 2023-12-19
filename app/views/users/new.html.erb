@@ -6,8 +6,12 @@
     <%= f.password_field :password %>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
     <%= f.label :uid %>
-    <%= f.number_field :uid %>
+    <%= f.text_field :uid %>
     <%= f.submit "Sign up" %>
 <% end %>
 

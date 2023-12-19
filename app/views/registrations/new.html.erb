@@ -1,0 +1,51 @@
+<!-- app/views/registrations/new.html.erb -->
+<div class="text-center">
+  <h1>Registration</h1>
+
+  <%= form_with(model: @user, url: registrations_path, local: true) do |f| %>
+
+    <!-- Display error message of form -->
+    <% if f.object.errors.full_messages.any? %>
+      <ul class='error'>
+        <% f.object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <!-- Field of registration form -->
+    <div class='row'>
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: 'Please enter email id' %>
+    </div>
+
+    <div class='row'>
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: 'Please enter password' %>
+    </div>
+
+    <div class='row'>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, placeholder: 'Please enter password confirmation' %>
+    </div>
+
+    <div class='row'>
+      <%= f.label :uid %>
+      <%= f.number_field :uid, placeholder: 'Please enter uid' %>
+    </div>
+
+    <div class='row'>
+      <%= f.label :first_name %>
+      F<%= f.text_field :first_name, placeholder: 'First Name' %>
+    </div>
+
+    <div class='row'>
+      <%= f.label :last_name %>
+      F<%= f.text_field :last_name, placeholder: 'First Name' %>
+    </div>
+
+    <div class='row'>
+      <%= f.submit 'Sign Up' %>
+    </div>
+  <% end%>
+</div>
