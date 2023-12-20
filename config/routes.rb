@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root "home#index"
 
-#  post '/registrations/new', to: 'registrations#create'
   resources :registrations, only: [:new,:create]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy, :post]
 
   get '/signup', to: 'sessions#new'
   get '/sign_out', to: 'sessions#destroy'
