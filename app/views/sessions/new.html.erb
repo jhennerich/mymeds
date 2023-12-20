@@ -1,6 +1,6 @@
 <!-- app/views/sessions/new.html.erb -->
 <div class="text-center">
-  <h1>Sign In</h1>
+  <h1>MyMeds Sign In</h1>
 
   <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
 
@@ -29,11 +29,10 @@
     </div>
 
     <div class='row'>
-    <%= button_to "Sign in with Github", "/auth/github", data: { turbo: false } %>
+     <%= link_to "Register with email", new_registration_path, method: :get %> 
     </div>
-
     <div class='row'>
-    <%= button_to "Sign in with Google", '/auth/google_oauth2', method: :post, :data => {turbo: "false"} %>
+     <%= button_to "Register with email", new_registration_path, method: :get %>
     </div>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
-#    skip_before_action :authenticate_user, only: [:new, :create]
+    skip_before_action :authenticate_user, only: [:new, :create]
     before_action :redirect_if_authenticated, only: [:new, :create]
   
     def new
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     end
   
     def create
-       @user = User.from_signup(params[:user])
+      @user = User.from_signup(params[:user]) 
 #      @user = User.find_by(email: params[:user][:email])
       if @user.present? && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
