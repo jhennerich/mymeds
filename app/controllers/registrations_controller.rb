@@ -1,6 +1,6 @@
 # app/controllers/registrations_controller.rb
 class RegistrationsController < ApplicationController
-    skip_before_action :authenticate_user, only: [:new, :create]
+#    skip_before_action :authenticate_user, only: [:new, :create]
     before_action :redirect_if_authenticated, only: [:new, :create] 
   
     def new
@@ -8,8 +8,9 @@ class RegistrationsController < ApplicationController
     end
   
     def create
-      @user = User.new(user_params)
-      if @user.save
+#      @user = User.new(user_params)
+      @user = User.from_registration(user_params)
+      if @user.valid?
         session[:user_id] = @user.id
         redirect_to dashboard_path, flash: { success: 'Registration successful' }
       else

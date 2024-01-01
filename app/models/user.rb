@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_secure_password
+#  has_secure_password
 
-  def self.from_signup(user_params)
+  def self.from_registration(user_params)
     User.find_or_create_by(email: user_params[:email]) do |u|
 
       u.uid = user_params[:uid]

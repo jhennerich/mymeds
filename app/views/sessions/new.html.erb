@@ -28,8 +28,6 @@
       <%= f.submit 'Sign In' %>
     </div>
 
-    <div class='row'>
-     <%= link_to "Register with email", new_registration_path, method: :get %> 
-    </div>
+    <p> <%= link_to "Register with email", "/registrations/new", method: :get %> </p>
   <% end %>
 </div>

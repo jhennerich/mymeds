@@ -7,7 +7,7 @@
 </p>
 -->
 
-<p> <%= button_to "Register with email", "/registrations/new", method: :post %> </p>
+<p> <%= button_to "Register with email", "/registrations/new", method: :get %> </p>
 <p> <%= button_to "Sign in with email", "/sessions/new", method: :get %> </p>
 <p> <%= button_to "Sign in with Github", "/auth/github", data: { turbo: false } %> </p>
 <p> <%= button_to "Sign in with Google", '/auth/google_oauth2', method: :post, :data => {turbo: "false"} %> </p>
