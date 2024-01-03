@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
     User.find_or_create_by(email: user_params[:email].downcase) do |u|
 
-      u.uid = user_params[:uid]
+      u.uid = (User.maximum(:id) || 0) + 1
       u.provider =  'email_oath'
       u.first_name = user_params[:first_name] 
       u.last_name = user_params[:last_name] 
@@ -23,9 +23,16 @@ class User < ApplicationRecord
 
       u.uid = access_token.uid
       u.provider= access_token.provider
-#      u.full_name = data.name
-      u.first_name = data.first_name 
-      u.last_name = data.last_name 
+
+      if data.name
+        u.first_name = data.name.split.first
+        u.last_name = data.name.split.last
+
+      else
+        u.first_name = data.first_name 
+        u.last_name = data.last_name 
+      end
+
       u.email = data.email
       u.encrypted_password = SecureRandom.hex(15)
       u.password_digest = access_token.provider

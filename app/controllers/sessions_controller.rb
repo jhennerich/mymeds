@@ -13,15 +13,15 @@ class SessionsController < ApplicationController
       if @user.provider == 'google_oauth2' 
          redirect_to root_path, flash: { failure: 'Please login with Google' }
 
+      else  
 
-      elsif
         @user = User.from_registration(params[:user]) 
         if @user.present? && @user.authenticate(params[:user][:password])
          session[:user_id] = @user.id
          redirect_to dashboard_path, flash: { success: 'Logged in successfully' }
+        else
+         render :new
         end
-      else
-        render :new
       end
     end
   
@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
         @user = User.from_omniauth(request.env['omniauth.auth'])
         if @user.valid?
             session[:user_id] = @user.id
-            redirect_to dashboard_path
+            redirect_to dashboard_path, flash: { success: 'Logged in successfully' }
         else
             render :new
         end
