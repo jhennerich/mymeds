@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  #has_secure_password
+  has_secure_password
 
   def self.from_registration(user_params)
-    User.find_or_create_by(email: user_params[:email]) do |u|
+
+    User.find_or_create_by(email: user_params[:email].downcase) do |u|
 
       u.uid = user_params[:uid]
       u.provider =  'email_oath'
@@ -10,7 +11,7 @@ class User < ApplicationRecord
       u.last_name = user_params[:last_name] 
       u.email = user_params[:email]
       u.encrypted_password = user_params[:password]
-      u.password_digest = user_params[:password]
+      u.password_digest = BCrypt::Password.create(user_params[:password])
 
     end
   end

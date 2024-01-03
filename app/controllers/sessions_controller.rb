@@ -8,12 +8,18 @@ class SessionsController < ApplicationController
     end
   
     def create
-      @user = User.from_registration(params[:user]) 
-#      @user = User.find_by(email: params[:user][:email])
-#      if @user.present? && @user.authenticate(params[:user][:password])
-      if @user.present? 
-        session[:user_id] = @user.id
-        redirect_to dashboard_path, flash: { success: 'Logged in successfully' }
+      @user = User.find_by_email(params[:user][:email].downcase)
+
+      if @user.provider == 'google_oauth2' 
+         redirect_to root_path, flash: { failure: 'Please login with Google' }
+
+
+      elsif
+        @user = User.from_registration(params[:user]) 
+        if @user.present? && @user.authenticate(params[:user][:password])
+         session[:user_id] = @user.id
+         redirect_to dashboard_path, flash: { success: 'Logged in successfully' }
+        end
       else
         render :new
       end
