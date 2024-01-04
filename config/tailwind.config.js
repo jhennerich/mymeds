@@ -1,7 +1,7 @@
 import { fontFamily as _fontFamily } from 'tailwindcss/defaultTheme'
 
 export const content = [
-  './public/*.html',
+  './public/*.html', 
   './app/helpers/**/*.rb',
   './app/javascript/**/*.js',
   './app/views/**/*.{erb,haml,html,slim}'
