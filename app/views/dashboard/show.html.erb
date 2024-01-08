@@ -8,6 +8,5 @@
 
 <h2> Your Meds </h2>
 <% else %>
-<h1>Please login or sign up </h1>
-<% controller.redirect_to root_path %>
+<% controller.redirect_to root_path flash: {info: 'You must be signed in'} %>
 <% end %>
