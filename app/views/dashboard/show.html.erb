@@ -1,3 +1,4 @@
+<% if current_user %>
 <h1>Welcome, <%= current_user.first_name %>  to MyMeds</h1>
 <p> Email: <%= current_user.email %> </p>
 <p> Login Provider: <%= current_user.provider %> </p>
@@ -6,3 +7,7 @@
 <p> First Name: <%= current_user.first_name %> </p>
 
 <h2> Your Meds </h2>
+<% else %>
+<h1>Please login or sign up </h1>
+<% controller.redirect_to root_path %>
+<% end %>
