@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
   
     def create
 #      @user = User.new(user_params)
-      @user = User.from_registration(user_params)
+      @user = User.from_registration(user_params) 
       if @user.valid?
         session[:user_id] = @user.id
         redirect_to dashboard_path, flash: { success: 'Registration successful' }
@@ -20,6 +20,6 @@ class RegistrationsController < ApplicationController
   
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation,
-       :uid, :first_name, :last_name)
+       :first_name, :last_name)
     end
 end

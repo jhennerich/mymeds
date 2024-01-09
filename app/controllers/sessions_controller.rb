@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
       else  
 
-        @user = User.from_registration(params[:user]) 
+        @user = User.from_registration(params[:user]) if params[:user][:email] != ""
         if @user.present? && @user.authenticate(params[:user][:password])
          session[:user_id] = @user.id
          redirect_to dashboard_path, flash: { success: 'Logged in successfully' }

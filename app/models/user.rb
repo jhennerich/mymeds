@@ -1,19 +1,25 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   has_secure_password
 
   def self.from_registration(user_params)
 
-    User.find_or_create_by(email: user_params[:email].downcase) do |u|
+    if user_params[:email] != ""
+      User.find_or_create_by(email: user_params[:email].downcase) do |u|
 
-      u.uid = (User.maximum(:id) || 0) + 1
-      u.provider =  'email_oath'
-      u.first_name = user_params[:first_name] 
-      u.last_name = user_params[:last_name] 
-      u.email = user_params[:email]
-      u.encrypted_password = user_params[:password]
-      u.password_digest = BCrypt::Password.create(user_params[:password])
+       u.uid = (User.maximum(:id) || 0) + 1
+       u.provider =  'email_oath'
+       u.first_name = user_params[:first_name] 
+       u.last_name = user_params[:last_name] 
+       u.email = user_params[:email]
+       u.encrypted_password = user_params[:password]
+       u.password_digest = BCrypt::Password.create(user_params[:password])
 
+      end
+    else
+      User.new
     end
+
   end
 
   def self.from_omniauth(access_token)

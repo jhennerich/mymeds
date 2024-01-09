@@ -1,6 +1,9 @@
 <!-- app/views/registrations/new.html.erb -->
 <div class="text-center">
-  <h1>Registration</h1>
+  <h1 class="text-cyan-700 text-3xl text-center font-bold">
+    Registration
+  </h1>
+</div>
 
   <%= form_with(model: @user, url: registrations_path, local: true) do |f| %>
 
@@ -14,38 +17,36 @@
     <% end %>
 
     <!-- Field of registration form -->
-    <div class='row'>
+    <div class="grid grid-cols-1 gap-.5">
+
+    <div class="w-full rounded text-xl text-cyan-900 mb-2 mt-4">
       <%= f.label :email %>
-      <%= f.text_field :email, placeholder: 'Please enter email id' %>
+      <%= f.text_field :email, placeholder: 'Please enter email id', class: "outline-none px-4 h-full py-2 text-lg" %>
     </div>
 
-    <div class='row'>
+    <div class="w-full rounded text-xl text-cyan-900 mb-2 mt-4">
       <%= f.label :password %>
       <%= f.password_field :password, placeholder: 'Please enter password' %>
     </div>
 
-    <div class='row'>
+    <div class="w-full rounded text-xl text-cyan-900 mb-2 mt-4">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, placeholder: 'Please enter password confirmation' %>
     </div>
 
-    <div class='row'>
-      <%= f.label :uid %>
-      <%= f.number_field :uid, placeholder: 'Please enter uid' %>
-    </div>
-
-    <div class='row'>
+    <div class="w-full rounded text-xl text-cyan-900 mb-2 mt-4">
       <%= f.label :first_name %>
       <%= f.text_field :first_name, placeholder: 'First Name' %>
     </div>
 
-    <div class='row'>
+    <div class="w-full rounded text-xl text-cyan-900 mb-2 mt-4">
       <%= f.label :last_name %>
       <%= f.text_field :last_name, placeholder: 'Last Name' %>
     </div>
 
-    <div class='row'>
-      <%= f.submit 'Sign Up' %>
+    <div class="w-full rounded text-xl text-cyan-900 mb-2 mt-4">
+     <%= f.submit "Sign up", class: "rounded mt-6 px-4 text-cyan-200 bg-cyan-700 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-300" %>
+
+    </div>
     </div>
   <% end%>
-</div>
