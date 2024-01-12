@@ -1,33 +1,44 @@
 <!-- app/views/sessions/new.html.erb -->
-<div class="text-center">
-  <h1>MyMeds Sign In</h1>
+<section >
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="w-full bg-cyan-900 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <div class="text-center">
+          <h1 class="text-3xl font-bold leading-tight tracking-tight text-cyan-200 ">
+              MyMeds Sign In
+          </h1>
+        </div>
 
-  <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
+        <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
 
-    <!-- Display error message of form -->
-    <% if f.object.errors.full_messages.any? %>
-      <ul class='error'>
+        <% if f.object.errors.full_messages.any? %>
+           <ul class='error'>
         <% f.object.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-      </ul>
-    <% end %>
+        </ul>
+        <% end %>
 
-    <!-- Field of sessoin form -->
-    <div class='row'>
-      <%= f.label :email %>
-      <%= f.text_field :email, placeholder: 'Please enter email id' %>
-    </div>
+       <div class="grid grid-cols-1 gap-.5">
+           <div class="lock mb-2 text-lg font-medium text-cyan-200">
+             <%= f.label :email %>
+             <%= f.text_field :email, class: 'bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-primary-600 block w-full p-2.5', placeholder: 'name@company.com' %>
+           </div>
 
-    <div class='row'>
-      <%= f.label :password %>
-      <%= f.password_field :password, placeholder: 'Please enter password' %>
-    </div>
+           <div class="lock mb-2 text-lg font-medium text-cyan-200">
+             <%= f.label :password %>
+             <%= f.password_field :password, placeholder: '••••••••', class: 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' %>
+           </div>
 
-    <div class='row'>
-      <%= f.submit 'Sign In' %>
-    </div>
+            <div class="w-full rounded text-xl text-cyan-900 mb-2 mt-4">
+             <%= f.submit "Sign In", class: 'w-full text-cyan-200 bg-cyan-800 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %>
+           </div>
 
-    <p> <%= link_to "Register with email", "/registrations/new", method: :get %> </p>
-  <% end %>
-</div>
+         <p class="text-sm font-light text-cyan-200">
+           <%= link_to "Create an Account", "/registrations/new", method: :get %> 
+         </p>
+        <% end %>
+      </div>
+    </div >
+  </div>
+</section>

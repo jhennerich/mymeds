@@ -1,32 +1,20 @@
-<div class="h-screen bg-gradient-to-b from-cyan-200 to-cyan-700 border-solid ">
+<section>
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+     <div class="w-full bg-cyan-900 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
 
-<!-- <%= image_tag('MyMeds.png',style: 'display: block; margin: auto; width: 25%;') %>
--->
+          <h1 class="text-cyan-200 text-3xl text-center font-bold">
+           Welcome to MyMeds! 
+          </h1>
 
-    <h1 class="text-cyan-700 text-3xl text-center font-bold">
-     Welcome to MyMeds! 
-    </h1>
+            <div class="grid grid-cols-1 gap-2">
 
+             <%= button_to "Sign in with email", "/sessions/new", class: "w-full ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium  hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", method: :get %> 
+             <%= button_to "Sign in with Github", "/auth/github", class: "w-full ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium  hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", data: { turbo: false } %> 
+             <%= button_to "Sign in with Google", '/auth/google_oauth2', class: "w-full ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", method: :post, :data => {turbo: "false"} %> 
+             <%= button_to "Create an Account", "/registrations/new", class: "w-full ml-3 bg-cyan-700 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-cyan-200 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", method: :get %> 
 
-
-<!--
-<p>
-<%= link_to "https://github.com/login/oauth/authorize?client_id="+ @github_client_id + "&scope=repo" do %>
-    <%= image_tag'github.png', size: "250x100" %>
-<% end %>
-</p>
-
-<div class="flex space-x-3">
-     <%= button_to "Register with email", "/registrations/new", form_class: "flex-1", class: "w-full bg-blue-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", method: :get %> 
-</div>
--->
-
-<div class="grid grid-cols-1 gap-1">
-
-     <%= button_to "Register with email", "/registrations/new", class: "w-full ml-3 bg-cyan-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", method: :get %> 
-     <%= button_to "Sign in with email", "/sessions/new", class: "w-full ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", method: :get %> 
-     <%= button_to "Sign in with Github", "/auth/github", class: "w-full ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", data: { turbo: false } %> 
-     <%= button_to "Sign in with Google", '/auth/google_oauth2', class: "w-full ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", method: :post, :data => {turbo: "false"} %> 
-
-</div>
-</div>
+            </div>
+        </div>
+    </div>
+</section>
