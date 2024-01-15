@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   def self.from_registration(user_params)
 
-    if user_params[:email] != ""
+#    if user_params[:email] != ""
       User.find_or_create_by!(email: user_params[:email].downcase) do |u|
 
        u.uid = (User.maximum(:id) || 0) + 1
@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
        u.password_digest = BCrypt::Password.create(user_params[:password])
 
       end
-    else
-      User.new
-    end
+#    else
+#      User.new
+#    end
 
   end
 
