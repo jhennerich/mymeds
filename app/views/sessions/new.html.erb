@@ -9,6 +9,14 @@
           </h1>
         </div>
 
+        <% if @user.errors.full_messages.any? %>
+           <ul class='error'>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+        <% end %>
+
         <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
 
         <% if f.object.errors.full_messages.any? %>

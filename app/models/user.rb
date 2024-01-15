@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
+
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates_uniqueness_of :email
   has_secure_password
 
-  binding.pry
 
   def self.from_registration(user_params)
 
     if user_params[:email] != ""
-      User.find_or_create_by(email: user_params[:email].downcase) do |u|
+      User.find_or_create_by!(email: user_params[:email].downcase) do |u|
 
        u.uid = (User.maximum(:id) || 0) + 1
        u.provider =  'email_oath'
