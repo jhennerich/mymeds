@@ -1,8 +1,10 @@
-Rails.application.routes.draw do
-  root "home#index"
+# frozen_string_literal: true
 
-  resources :registrations, only: [:new,:create]
-  resources :sessions, only: [:new, :create, :destroy]
+Rails.application.routes.draw do
+  root 'home#index'
+
+  resources :registrations, only: %i[new create]
+  resources :sessions, only: %i[new create destroy]
 
   get '/signup', to: 'sessions#new'
   get '/sign_out', to: 'sessions#destroy'
@@ -10,6 +12,5 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#omniauth'
   post '/auth/:provider/callback' => 'sessions#omniauth'
-  get "/dashboard", to: "dashboard#show"
-
+  get '/dashboard', to: 'dashboard#show'
 end
